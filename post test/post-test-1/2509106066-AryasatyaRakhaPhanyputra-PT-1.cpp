@@ -61,6 +61,7 @@ int main(){
             cout << "Masukkan Menit : ";
             cin >> menit;
             cout << "Hasil Konversi:\n";
+            cout << menit << " Menit = ";
             cout << menit / 60 << " Jam";
             cout << " ";
             sisaMenit = menit % 60;
@@ -73,16 +74,17 @@ int main(){
             int detik;
             int sisaDetik;
             int SisaMenit;
+            SisaMenit = detik % 3600;
             cout << "Masukkan Detik : ";
             cin >> detik;
             cout << "Hasil Konversi:\n";
             cout << detik << " Detik = ";
             cout << detik / 3600 << " Jam ";
             SisaMenit = detik % 3600;
-            cout << SisaMenit / 60 << " Menit , ";
-            cout << detik / 60 << " Menit dan \n";
+            cout << SisaMenit / 60 << " Menit , "; // sisa menit dari konversi detik ke jam
+            cout << detik / 60 << " Menit , "; 
             sisaDetik = detik % 60;
-            cout << sisaDetik << " Detik\n";
+            cout << sisaDetik << " Detik\n"; 
             cout << "Konversi selesai kembali ke menu\n"<< endl;
         }
         else if(pilih == 4){
