@@ -81,7 +81,7 @@ int main(){
             cout << detik << " Detik = ";
             cout << detik / 3600 << " Jam ";
             SisaMenit = detik % 3600;
-            cout << SisaMenit / 60 << " Menit , "; // sisa menit dari konversi detik ke jam
+            cout << SisaMenit / 60 << " Menit dan "; // sisa menit dari konversi detik ke jam
             cout << detik / 60 << " Menit , "; 
             sisaDetik = detik % 60;
             cout << sisaDetik << " Detik\n"; 
