@@ -74,7 +74,6 @@ int main(){
             int detik;
             int sisaDetik;
             int SisaMenit;
-            SisaMenit = detik % 3600;
             cout << "Masukkan Detik : ";
             cin >> detik;
             cout << "Hasil Konversi:\n";
