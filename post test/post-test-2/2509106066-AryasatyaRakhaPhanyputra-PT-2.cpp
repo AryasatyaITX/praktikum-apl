@@ -24,7 +24,7 @@ struct Lightnovel{
 
 Lightnovel novel[MAX_LIGHTNOVEL] = {
     {1,"Sword Art Online","Reki Kawahara",{"Fantasy",27,"Ongoing"}},
-    {2,"Overlord","Kugane Maruyama",{"Isekai",16,"Ongoing"}},
+    {2,"Overlord","Kugane Maruyama",{"Isekai",17,"Ongoing"}},
     {3,"Classroom of the Elite","Syougo Kinugasa",{"School",14,"Ongoing"}}
 };
 
