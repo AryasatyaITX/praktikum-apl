@@ -4,6 +4,11 @@ using namespace std;
 
 #define MAX_LIGHTNOVEL 100
 
+struct login{
+    string username;
+    string password;
+};
+
 struct detail{
     string genre;
     int volume;
@@ -26,6 +31,7 @@ Lightnovel novel[MAX_LIGHTNOVEL] = {
 int jumlahNovel = 3;
 
 int main(){
+    login user = {"Arya","066"}; 
     string username,password;
     int kesempatan = 0;
     int pilih;
@@ -39,12 +45,11 @@ int main(){
         cin>>username;
         cout<<"Masukkan password : ";
         cin>>password;
-        if(username == "Arya" && password == "066"){
+        if(username == user.username && password == user.password){
             cout<<"\n=====================================\n";
             cout<<"|           Login Berhasil!         |\n";
             cout<<"|     Selamat datang "<<username<<"           |\n";
             cout<<"=====================================\n"<<endl;
-            system("cls");
             break;
         }
         else{
@@ -67,7 +72,7 @@ int main(){
         cout<<"|1. Lihat Light Novel                  |\n";
         cout<<"|2. Tambah Light Novel                 |\n";
         cout<<"|3. Perbarui Light Novel               |\n";
-        cout<<"|4. Delete                             |\n";
+        cout<<"|4. Hapus Light Novel                  |\n";
         cout<<"|5. Keluar                             |\n";
         cout<<"========================================\n";
         cout<<"Pilih menu : ";
@@ -159,7 +164,7 @@ int main(){
                 cout<<"\nMasukkan ID Light Novel yang ingin diupdate : ";
                 cin>>id;
                 int index = id - 1;
-                if(index < 0 && index >= jumlahNovel){
+                if(index < 0 || index >= jumlahNovel){
                     cout<<"ID tidak ditemukan.\n";
                 }
                 else{
@@ -176,24 +181,31 @@ int main(){
                     if(field == 1){
                         cout<<"Masukkan Judul Baru : ";
                         getline(cin,novel[index].judul);
+                        cout<<"Data berhasil diupdate.\n"<<endl;
                     }
                     else if(field == 2){
                         cout<<"Masukkan Author Baru : ";
                         getline(cin,novel[index].author);
+                        cout<<"Data berhasil diupdate.\n"<<endl;
                     }
                     else if(field == 3){
                         cout<<"Masukkan Genre Baru : ";
                         getline(cin,novel[index].detailNovel.genre);
+                        cout<<"Data berhasil diupdate.\n"<<endl;
                     }
                     else if(field == 4){
                         cout<<"Masukkan Volume Baru : ";
                         cin>>novel[index].detailNovel.volume;
+                        cout<<"Data berhasil diupdate.\n"<<endl;                        
                     }
                     else if(field == 5){
                         cout<<"Masukkan Status Baru : ";
                         getline(cin,novel[index].detailNovel.status);
+                        cout<<"Data berhasil diupdate.\n"<<endl;
                     }
-                    cout<<"\nData berhasil diupdate.\n"<<endl;
+                    else{
+                        cout<<"Pilihan field tidak tersedia. Update dibatalkan.\n";
+                    }
                 }
             }
             break;
@@ -230,14 +242,14 @@ int main(){
                 cout<<"Masukkan ID yang ingin dihapus : ";
                 cin>>id;
                 int index = id - 1;
-                if(index < 0 && index >= jumlahNovel){
+                if(index < 0 || index >= jumlahNovel){
                     cout<<"ID tidak ditemukan.\n"<<endl;
                 }
                 else{
                     int alasan;
                     cout<<"\nAlasan penghapusan:\n";
                     cout<<"1. Seri tidak dilanjutkan (Axed)\n";
-                    cout<<"2. Author bermasalah\n";
+                    cout<<"2. Author sedang ada masalah\n";
                     cout<<"Pilih alasan : ";
                     cin>>alasan;
 
