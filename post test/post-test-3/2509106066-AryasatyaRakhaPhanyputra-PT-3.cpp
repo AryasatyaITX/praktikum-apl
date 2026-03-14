@@ -38,15 +38,6 @@ void clearBuffer() {
 }
 
 //Overloading
-string Pesan() {
-    system("cls");
-    cout << "================================\n";
-    cout << "|         TERIMA KASIH!        |\n";
-    cout << "|        Program selesai       |\n";
-    cout << "================================\n" << endl;
-    return "Program selesai";
-}
-
 string Pesan(string nama) {
     string tx = "Selamat datang " + nama + " di Sistem Informasi Light Novel.\n";
     cout << tx;
@@ -102,7 +93,7 @@ int tambahNovel(Lightnovel novel[], int &jumlahNovel) {
 
     Lightnovel Novelbaru;
     Novelbaru.id = jumlahNovel + 1;
-    cout<< "tekan Enter untuk lanjut";
+    cout<< "tekan Enter untuk lanjut...";
     clearBuffer(); 
     cout << "Masukkan Judul Light Novel : ";
     getline(cin, Novelbaru.judul);
@@ -298,7 +289,7 @@ void menuCRUD(Lightnovel novel[], int &jumlahNovel) {
                 break;
             case 2:
                 if (tambahNovel(novel, jumlahNovel)) {
-                    Pesan("Admin", "Data berhasil ditambahkan");
+                    Pesan("Admin", "Data berhasil ditambahkan ");
                 }
                 system("pause");
                 break;
@@ -307,12 +298,16 @@ void menuCRUD(Lightnovel novel[], int &jumlahNovel) {
                 break;
             case 4:
                 if (hapusNovel(novel, jumlahNovel)) {
-                    Pesan("Admin", "Data berhasil dihapus");
+                    Pesan("Admin", "Data berhasil dihapus ");
                 }
                 system("pause");
                 break;
             case 5:
-                Pesan();
+                system("cls");
+                cout << "================================\n";
+                cout << "|         TERIMA KASIH!        |\n";
+                cout << "|        Program selesai       |\n";
+                cout << "================================\n" << endl;
                 break;
             default:
                 cout << "Menu tidak tersedia\n";
