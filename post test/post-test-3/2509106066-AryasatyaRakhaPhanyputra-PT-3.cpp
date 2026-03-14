@@ -50,7 +50,8 @@ string Pesan(string nama, string status) {
     return tx;
 }
 
-void Header() {
+void Header(string judul) {
+    cout << "\n" << judul << "\n";
     cout << "================================================================================================\n";
     cout << "|" << setw(4) << "ID" << " | ";
     cout << setw(25) << "Judul" << " | ";
@@ -79,7 +80,7 @@ void lihatNovel(Lightnovel novel[], int jumlahNovel) {
         cout << "Belum ada data novel.\n";
         return;
     }
-    Header();
+    Header(" Daftar Light Novel :\n");
     rekursifread(novel, jumlahNovel);
     cout << "================================================================================================\n\n";
 }
@@ -121,17 +122,7 @@ void updateNovel(Lightnovel novel[], int jumlahNovel) {
             }
             else{
                 int id;
-                cout<<"Daftar Light Novel:\n";
-                cout<<"================================================================================================\n";
-                cout<<"|";
-                cout<<setw(4)<<"ID"<<" | ";
-                cout<<setw(25)<<"Judul"<<" | ";
-                cout<<setw(20)<<"Author"<<" | ";
-                cout<<setw(12)<<"Genre"<<" | ";
-                cout<<setw(6)<<"Vol"<<" | ";
-                cout<<setw(12)<<"Status"<<" |\n";
-                cout<<"================================================================================================\n";
-
+                Header(" Daftar Light Novel :\n");
                 for(int i=0;i<jumlahNovel;i++){
                     cout<<"|";
                     cout<<setw(4)<<novel[i].id<<" | ";
@@ -198,17 +189,7 @@ int hapusNovel(Lightnovel novel[], int &jumlahNovel) {
                 return 0;  
             }
             else{
-                cout<<"Daftar Light Novel:\n";
-                cout<<"================================================================================================\n";
-                cout<<"|";
-                cout<<setw(4)<<"ID"<<" | ";
-                cout<<setw(25)<<"Judul"<<" | ";
-                cout<<setw(20)<<"Author"<<" | ";
-                cout<<setw(12)<<"Genre"<<" | ";
-                cout<<setw(6)<<"Vol"<<" | ";
-                cout<<setw(12)<<"Status"<<" |\n";
-                cout<<"================================================================================================\n";
-
+                Header(" Daftar Light Novel :\n");
                 for(int i=0;i<jumlahNovel;i++){
                     cout<<"|";
                     cout<<setw(4)<<novel[i].id<<" | ";
