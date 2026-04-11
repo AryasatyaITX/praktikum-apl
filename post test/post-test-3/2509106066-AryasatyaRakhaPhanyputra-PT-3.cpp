@@ -101,15 +101,12 @@ int tambahNovel(Lightnovel novel[], int &jumlahNovel) {
     cout << "Masukkan Author            : ";
     getline(cin, Novelbaru.author);
     cout << "Masukkan Genre             : ";
-    getline(cin, Novelbaru.detailNovel.genre);
-    
+    getline(cin, Novelbaru.detailNovel.genre); 
     cout << "Masukkan Volume            : ";
-    cin >> Novelbaru.detailNovel.volume;
-    
+    cin >> Novelbaru.detailNovel.volume; 
     clearBuffer(); 
     cout << "Masukkan Status (Ongoing/Completed) : ";
     getline(cin, Novelbaru.detailNovel.status);
-
     novel[jumlahNovel] = Novelbaru;
     jumlahNovel++;
     return 1;
@@ -261,8 +258,7 @@ void menuCRUD(Lightnovel novel[], int &jumlahNovel) {
         cout << "Pilih menu : ";
         
         cin >> pilih;  
-        clearBuffer();
-        
+        clearBuffer();   
         switch (pilih) {
             case 1:
                 lihatNovel(novel, jumlahNovel);

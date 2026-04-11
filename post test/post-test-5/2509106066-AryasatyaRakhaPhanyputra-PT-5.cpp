@@ -275,7 +275,7 @@ void mergeSort(Lightnovel* arr, int left, int right) {
     }
 }
 void tampilmerge(Lightnovel* arr, int left, int right) {
-     system("cls");
+     //system("cls");
      if (jumlahNovel == 0) {
                     cout << "Belum ada data Light novel." << endl;
                     return;
@@ -288,7 +288,7 @@ void tampilmerge(Lightnovel* arr, int left, int right) {
 }
 
 void selectionSortVolume(Lightnovel* arr, int n) {
-    system("cls");
+    //system("cls");
     if (n == 0) {
         cout << "Belum ada data Light novel." << endl;
         return;
@@ -309,7 +309,22 @@ void selectionSortVolume(Lightnovel* arr, int n) {
     lihatNovel(arr, n);
 }
 
-
+void bubbleSort(Lightnovel *arr, int n) {
+    bool swapped;
+    for (int i = 0; i < n - 1; i++) {
+        swapped = false;
+        for (int j = 0; j < n - i - 1; j++) {
+            if ((arr + j)->author < (arr + j + 1)->author) {
+                tukarnovel(arr + j, arr + j + 1);
+                swapped = true;
+            }
+        }
+        if (swapped == false)
+            break;
+    }
+    cout << "Data berhasil diurutkan berdasarkan Author (Z-A)!" << endl;
+    lihatNovel(arr, n);
+}
 bool loginProgram(login user) {
     string username, password;
     int kesempatan = 0;
@@ -340,7 +355,7 @@ void menuCRUD(Lightnovel novel[], int &jumlahNovel) {
         cout << "|4. Hapus Light Novel                  |\n";
         cout << "|5. Urut Judul Light Novel(A-Z)        |\n";
         cout << "|6. Urut Volume Light Novel(Terdikit)  |\n";
-        cout << "|7. kEJUTAN                            |\n";
+        cout << "|7. Urut Author Light novel(Z-A)       |\n";
         cout << "|8. Keluar                             |\n";
         cout << "========================================\n";
         cout << "Pilih menu : ";
@@ -370,16 +385,18 @@ void menuCRUD(Lightnovel novel[], int &jumlahNovel) {
                 system("pause");
                 break;
             case 5:
+                cout << "Data berhasil diurutkan berdasarkan Nama Judul(A-Z)!" << endl;
                 tampilmerge(novel, 0, jumlahNovel - 1);
                 system("pause");
                 break;
             case 6:
+                cout << "Data berhasil diurutkan berdasarkan Volume terdikit!" << endl;
                 selectionSortVolume(novel, jumlahNovel);
                 system("pause");
                 break;
             case 7:
-                system("cls");
-                cout << "masih belum tersedia" <<endl;
+                cout << "Data berhasil diurutkan berdasarkan Author(Z-A)!" << endl;
+                bubbleSort(novel, jumlahNovel);
                 system("pause");
                 break;   
             case 8:
