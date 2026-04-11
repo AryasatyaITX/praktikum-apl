@@ -80,8 +80,8 @@ int rekursifread(Lightnovel novel[], int n) {
     return n; 
 }
 
-void lihatNovel(Lightnovel *novel, int jumlahNovel) {
-    system("cls");
+void lihatNovel(Lightnovel *novel, int jumlahNovel, bool clear = true) {
+    if(clear)system("cls");
     if (jumlahNovel == 0) {
         cout << "Belum ada data novel.\n";
         return;
@@ -275,24 +275,27 @@ void mergeSort(Lightnovel* arr, int left, int right) {
     }
 }
 void tampilmerge(Lightnovel* arr, int left, int right) {
-     //system("cls");
+     system("cls");
      if (jumlahNovel == 0) {
                     cout << "Belum ada data Light novel." << endl;
                     return;
                 }
-                cout << "Data sebelum diurutkan (berdasarkan nama Kereta)" << endl;
-                lihatNovel(novel, jumlahNovel);
+                cout << "Data sebelum diurutkan berdasarkan judul(A-Z)" << endl;
+                lihatNovel(novel, jumlahNovel, false);
                 mergeSort(novel, 0, jumlahNovel - 1);
-                cout << "Data berhasil diurutkan berdasarkan Nama Kereta!" << endl;
-                lihatNovel(novel, jumlahNovel);
+                cout << "Data berhasil diurutkan berdasarkan judul(A-Z)!" << endl;
+                lihatNovel(novel, jumlahNovel,false);
 }
 
 void selectionSortVolume(Lightnovel* arr, int n) {
-    //system("cls");
+    system("cls");
     if (n == 0) {
         cout << "Belum ada data Light novel." << endl;
         return;
     }
+    cout << "Data sebelum diurutkan berdasarkan Volume(Terdikit)" << endl;
+    lihatNovel(novel, jumlahNovel, false);
+    
     for (int i = 0; i < n - 1; i++) {
         int minIdx = i;
         for (int j = i + 1; j < n; j++) {
@@ -304,12 +307,19 @@ void selectionSortVolume(Lightnovel* arr, int n) {
             tukarnovel(arr + i, arr + minIdx);
         }
     }
-    cout << "============================================================\n";
     cout << "Data berhasil diurutkan berdasarkan Volume (Terdikit)!" << endl;
-    lihatNovel(arr, n);
+    lihatNovel(arr, n, false);
 }
 
 void bubbleSort(Lightnovel *arr, int n) {
+    system("cls");
+    if (n ==0){
+        cout << "Belum ada data Light novel." << endl;
+        return;
+    }
+    cout << "Data sebelum diurutkan berdasarkan Author (Z-A)" << endl;
+    lihatNovel(novel, jumlahNovel, false);
+
     bool swapped;
     for (int i = 0; i < n - 1; i++) {
         swapped = false;
@@ -323,7 +333,7 @@ void bubbleSort(Lightnovel *arr, int n) {
             break;
     }
     cout << "Data berhasil diurutkan berdasarkan Author (Z-A)!" << endl;
-    lihatNovel(arr, n);
+    lihatNovel(arr, n, false);
 }
 bool loginProgram(login user) {
     string username, password;
@@ -385,17 +395,14 @@ void menuCRUD(Lightnovel novel[], int &jumlahNovel) {
                 system("pause");
                 break;
             case 5:
-                cout << "Data berhasil diurutkan berdasarkan Nama Judul(A-Z)!" << endl;
                 tampilmerge(novel, 0, jumlahNovel - 1);
                 system("pause");
                 break;
             case 6:
-                cout << "Data berhasil diurutkan berdasarkan Volume terdikit!" << endl;
                 selectionSortVolume(novel, jumlahNovel);
                 system("pause");
                 break;
             case 7:
-                cout << "Data berhasil diurutkan berdasarkan Author(Z-A)!" << endl;
                 bubbleSort(novel, jumlahNovel);
                 system("pause");
                 break;   
