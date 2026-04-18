@@ -377,12 +377,12 @@ void Fitursearch(Lightnovel* arr, int n) {
     }
 
     int pilih;
-    cout << "=================================================\n";
-    cout << "|           MENU SEARCHING LIGHT NOVEL          |\n";
-    cout << "=================================================\n";
-    cout << "|1. Cari berdasarkan ID Light novel (Binary)    |\n";
-    cout << "|2. Cari berdasarkan Judul Light novel (Linear) |\n";
-    cout << "=================================================\n";
+    cout << "========================================================\n";
+    cout << "|             MENU SEARCHING LIGHT NOVEL               |\n";
+    cout << "========================================================\n";
+    cout << "|1. Cari berdasarkan ID Light novel (Binary Search)    |\n";
+    cout << "|2. Cari berdasarkan Judul Light novel (Linear Search) |\n";
+    cout << "========================================================\n";
     cout << "Pilih : ";
     cin >> pilih;
     clearBuffer();
