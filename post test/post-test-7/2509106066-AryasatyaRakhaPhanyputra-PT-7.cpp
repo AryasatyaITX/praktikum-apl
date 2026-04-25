@@ -391,11 +391,10 @@ int linearsearch(Lightnovel* arr, int n, string target) {
 void Fitursearch(Lightnovel* arr, int n) {
     system("cls");
     if (n == 0) {
-        cout << "Belum ada data Light Novel.\n";
+        cout << "Belum ada data Light Novel!\n";
         system("pause");
         return;
     }
-
     int pilih;
     cout << "========================================================\n";
     cout << "|             MENU SEARCHING LIGHT NOVEL               |\n";
