@@ -73,7 +73,6 @@ void tukarnovel(Lightnovel* a, Lightnovel* b) {
 int rekursifread(Lightnovel novelArr[], int n) {
     if (n == 0) return 0;
     rekursifread(novelArr, n - 1);
-
     cout << "|" << setw(4) << novelArr[n - 1].id << " | ";
     cout << setw(25) << novelArr[n - 1].judul << " | ";
     cout << setw(20) << novelArr[n - 1].author << " | ";
@@ -104,6 +103,12 @@ int tambahNovel(Lightnovel novelArr[], int &jml) {
     novelPtr->id = jml + 1;
     cout << "Masukkan Judul Light Novel : ";
     getline(cin, novelPtr->judul);
+    if (novelPtr->judul.empty()) {
+        throw length_error("Judul tidak boleh kosong!");
+    }
+    if ((int)novelPtr->judul.length() > 25) {
+        throw length_error("Judul terlalu panjang! Maksimal 25 karakter.");
+    }
     cout << "Masukkan Author            : ";
     getline(cin, novelPtr->author);
     cout << "Masukkan Genre             : ";
@@ -121,8 +126,8 @@ int tambahNovel(Lightnovel novelArr[], int &jml) {
     clearBuffer();
     cout << "Masukkan Status (Ongoing/Completed) : ";
     getline(cin, novelPtr->detailNovel.status);
-
-    if (novelPtr->detailNovel.status != "Ongoing" && novelPtr->detailNovel.status != "Completed") {
+    if (novelPtr->detailNovel.status != "Ongoing" &&
+        novelPtr->detailNovel.status != "Completed") {
         throw invalid_argument("Status harus 'Ongoing' atau 'Completed'!");
     }
     novelArr[jml] = Novelbaru;
@@ -136,6 +141,7 @@ void updateNovel(Lightnovel *novelArr, int jml) {
         cout << "\nBelum ada data Light Novel untuk diupdate.\n\n";
         return;
     }
+
     int id;
     Header(" Daftar Light Novel :\n");
     for (int i = 0; i < jml; i++) {
@@ -148,6 +154,7 @@ void updateNovel(Lightnovel *novelArr, int jml) {
         cout << setw(12) << novelArr[i].detailNovel.status << " |\n";
     }
     cout << "=================================================================================================\n";
+
     cout << "\nMasukkan ID Light Novel yang ingin diupdate : ";
     cin >> id;
     if (cin.fail()) {
@@ -202,12 +209,11 @@ void updateNovel(Lightnovel *novelArr, int jml) {
     } else if (field == 5) {
         cout << "Masukkan Status Baru : ";
         getline(cin, targetNovel->detailNovel.status);
-
-        if (targetNovel->detailNovel.status != "Ongoing" && targetNovel->detailNovel.status != "Completed") {
+        if (targetNovel->detailNovel.status != "Ongoing" &&
+            targetNovel->detailNovel.status != "Completed") {
             throw invalid_argument("Status harus 'Ongoing' atau 'Completed'!");
         }
     }
-
     cout << "\nData berhasil diupdate.\n\n";
 }
 
@@ -217,7 +223,6 @@ int hapusNovel(Lightnovel novelArr[], int *jml) {
         cout << "\nBelum ada data Light Novel untuk dihapus.\n\n";
         return 0;
     }
-
     Header(" Daftar Light Novel :\n");
     for (int i = 0; i < *jml; i++) {
         cout << "|";
@@ -262,7 +267,6 @@ int hapusNovel(Lightnovel novelArr[], int *jml) {
         novelArr[i].id = i + 1;
     }
     (*jml)--;
-
     cout << "\nData berhasil dihapus.\n\n";
     return 1;
 }
@@ -307,9 +311,7 @@ void tampilmerge(Lightnovel* arr, int left, int right) {
     }
     cout << "Data sebelum diurutkan berdasarkan judul (A-Z)\n";
     lihatNovel(novel, jumlahNovel, false);
-
     mergeSort(novel, 0, jumlahNovel - 1);
-
     cout << "Data berhasil diurutkan berdasarkan judul (A-Z)!\n";
     lihatNovel(novel, jumlahNovel, false);
 }
@@ -357,13 +359,11 @@ void bubbleSort(Lightnovel *arr, int n) {
         }
         if (!swapped) break;
     }
-
     cout << "Data berhasil diurutkan berdasarkan Author (Z-A)!\n";
     lihatNovel(arr, n, false);
 }
 
 int binarysearch(Lightnovel* arr, int n, int target) {
-    // Sort ID ascending (bubble) agar bisa binary search
     for (int i = 0; i < n - 1; i++) {
         for (int j = 0; j < n - i - 1; j++) {
             if ((arr + j)->id > (arr + j + 1)->id) {
@@ -422,7 +422,6 @@ void Fitursearch(Lightnovel* arr, int n) {
             clearBuffer();
             throw invalid_argument("Input ID yang dicari harus berupa angka!");
         }
-
         int hasil = binarysearch(arr, n, cariID);
         if (hasil != -1) {
             Header(" Hasil Pencarian ");
@@ -505,6 +504,7 @@ void menuCRUD(Lightnovel novelArr[], int &jml) {
                 throw out_of_range("Menu tidak tersedia!");
             }
             clearBuffer();
+
             switch (pilih) {
                 case 1:
                     lihatNovel(novelArr, jml);
